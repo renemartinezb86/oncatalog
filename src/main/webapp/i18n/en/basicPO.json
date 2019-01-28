@@ -1,0 +1,26 @@
+{
+    "onCatalogApp": {
+        "basicPO": {
+            "home": {
+                "title": "Basic POS",
+                "createLabel": "Create a new Basic PO",
+                "createOrEditLabel": "Create or edit a Basic PO",
+                "search": "Search for Basic PO"
+            },
+            "created": "A new Basic PO is created with identifier {{ param }}",
+            "updated": "A Basic PO is updated with identifier {{ param }}",
+            "deleted": "A Basic PO is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Basic PO {{ id }}?"
+            },
+            "detail": {
+                "title": "Basic PO"
+            },
+            "poId": "Po Id",
+            "name": "Name",
+            "characteristics": "Characteristics",
+            "optionalServices": "Optional Services",
+            "catalog": "Catalog"
+        }
+    }
+}

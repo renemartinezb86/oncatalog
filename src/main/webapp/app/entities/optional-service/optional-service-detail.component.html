@@ -1,0 +1,41 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="optionalService">
+            <h2><span jhiTranslate="onCatalogApp.optionalService.detail.title">Optional Service</span> {{optionalService.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="onCatalogApp.optionalService.serviceId">Service Id</span></dt>
+                <dd>
+                    <span>{{optionalService.serviceId}}</span>
+                </dd>
+                <dt><span jhiTranslate="onCatalogApp.optionalService.cardinality">Cardinality</span></dt>
+                <dd>
+                    <span>{{optionalService.cardinality}}</span>
+                </dd>
+                <dt><span jhiTranslate="onCatalogApp.optionalService.group">Group</span></dt>
+                <dd>
+                    <span>{{optionalService.group}}</span>
+                </dd>
+                <dt><span jhiTranslate="onCatalogApp.optionalService.basicPO">Basic PO</span></dt>
+                <dd>
+                    <div *ngIf="optionalService.basicPO">
+                        <a [routerLink]="['/basic-po', optionalService.basicPO?.id, 'view']">{{optionalService.basicPO?.poId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/optional-service', optionalService.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

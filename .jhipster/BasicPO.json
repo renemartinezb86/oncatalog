@@ -1,0 +1,42 @@
+{
+    "name": "BasicPO",
+    "fields": [
+        {
+            "fieldName": "poId",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "characteristics",
+            "otherEntityName": "characteristic",
+            "otherEntityRelationshipName": "basicPO"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "optionalServices",
+            "otherEntityName": "optionalService",
+            "otherEntityRelationshipName": "basicPO"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "catalog",
+            "otherEntityName": "catalog",
+            "otherEntityField": "name"
+        }
+    ],
+    "changelogDate": "20190128150252",
+    "entityTableName": "basic_po",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": true,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

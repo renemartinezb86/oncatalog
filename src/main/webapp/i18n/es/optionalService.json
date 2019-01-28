@@ -1,0 +1,25 @@
+{
+    "onCatalogApp": {
+        "optionalService": {
+            "home": {
+                "title": "Optional Services",
+                "createLabel": "Crear nuevo Optional Service",
+                "createOrEditLabel": "Crear o editar Optional Service",
+                "search": "Search for Optional Service"
+            },
+            "created": "Un nuevo Optional Service ha sido creado con el identificador {{ param }}",
+            "updated": "Un Optional Service ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Optional Service ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Optional Service {{ id }}?"
+            },
+            "detail": {
+                "title": "Optional Service"
+            },
+            "serviceId": "Service Id",
+            "cardinality": "Cardinality",
+            "group": "Group",
+            "basicPO": "Basic PO"
+        }
+    }
+}

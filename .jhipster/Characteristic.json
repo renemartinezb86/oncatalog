@@ -1,0 +1,30 @@
+{
+    "name": "Characteristic",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "value",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "basicPO",
+            "otherEntityName": "basicPO",
+            "otherEntityField": "poId"
+        }
+    ],
+    "changelogDate": "20190128150253",
+    "entityTableName": "characteristic",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": true,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}
