@@ -1,0 +1,28 @@
+entity Catalog {
+	name String,
+    fileName String,
+    createdDate Instant
+}
+
+entity BasicPO {
+	poId String,
+    name String,
+}
+entity Characteristic {
+	name String,
+    value String
+}
+entity OptionalService {
+	serviceId String,
+    cardinality String,
+    group String
+}
+
+relationship OneToMany {
+	Catalog{basicPOs(poId)} to BasicPO{catalog(name)}
+	BasicPO{characteristics(name)} to Characteristic{basicPO(poId)}
+    BasicPO{optionalServices(serviceId)} to OptionalService{basicPO(poId)}
+}
+
+paginate * with infinite-scroll
+filter *
