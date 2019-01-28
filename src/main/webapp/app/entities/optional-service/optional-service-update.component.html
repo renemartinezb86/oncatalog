@@ -1,0 +1,46 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-optional-service-heading" jhiTranslate="onCatalogApp.optionalService.home.createOrEditLabel">Create or edit a Optional Service</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!optionalService.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="optionalService.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="onCatalogApp.optionalService.serviceId" for="field_serviceId">Service Id</label>
+                    <input type="text" class="form-control" name="serviceId" id="field_serviceId"
+                        [(ngModel)]="optionalService.serviceId" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="onCatalogApp.optionalService.cardinality" for="field_cardinality">Cardinality</label>
+                    <input type="text" class="form-control" name="cardinality" id="field_cardinality"
+                        [(ngModel)]="optionalService.cardinality" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="onCatalogApp.optionalService.group" for="field_group">Group</label>
+                    <input type="text" class="form-control" name="group" id="field_group"
+                        [(ngModel)]="optionalService.group" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="onCatalogApp.optionalService.basicPO" for="field_basicPO">Basic PO</label>
+                    <select class="form-control" id="field_basicPO" name="basicPO" [(ngModel)]="optionalService.basicPO" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="basicPOOption.id === optionalService.basicPO?.id ? optionalService.basicPO : basicPOOption" *ngFor="let basicPOOption of basicpos; trackBy: trackBasicPOById">{{basicPOOption.poId}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
