@@ -20,12 +20,6 @@
                         [(ngModel)]="characteristic.value" />
                 </div>
 
-                <div class="form-group">
-                    <label jhiTranslate="onCatalogApp.characteristic.basicPO" for="field_basicPO">Basic PO</label>
-                    <select class="form-control" id="field_basicPO" multiple name="basicPO" [(ngModel)]="characteristic.basicPOS">
-                        <option [ngValue]="getSelected(characteristic.basicPOS, basicPOOption)" *ngFor="let basicPOOption of basicpos; trackBy: trackBasicPOById">{{basicPOOption.poId}}</option>
-                    </select>
-                </div>
             </div>
             <div>
                 <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">

@@ -11,6 +11,7 @@ import ericsson.com.catalog.web.rest.errors.ExceptionTranslator;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -24,6 +25,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.validation.Validator;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -53,6 +55,12 @@ public class BasicPOResourceIntTest {
 
     @Autowired
     private BasicPORepository basicPORepository;
+
+    @Mock
+    private BasicPORepository basicPORepositoryMock;
+
+    @Mock
+    private BasicPOService basicPOServiceMock;
 
     @Autowired
     private BasicPOService basicPOService;
@@ -168,6 +176,39 @@ public class BasicPOResourceIntTest {
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())));
     }
     
+    @SuppressWarnings({"unchecked"})
+    public void getAllBasicPOSWithEagerRelationshipsIsEnabled() throws Exception {
+        BasicPOResource basicPOResource = new BasicPOResource(basicPOServiceMock);
+        when(basicPOServiceMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
+
+        MockMvc restBasicPOMockMvc = MockMvcBuilders.standaloneSetup(basicPOResource)
+            .setCustomArgumentResolvers(pageableArgumentResolver)
+            .setControllerAdvice(exceptionTranslator)
+            .setConversionService(createFormattingConversionService())
+            .setMessageConverters(jacksonMessageConverter).build();
+
+        restBasicPOMockMvc.perform(get("/api/basic-pos?eagerload=true"))
+        .andExpect(status().isOk());
+
+        verify(basicPOServiceMock, times(1)).findAllWithEagerRelationships(any());
+    }
+
+    @SuppressWarnings({"unchecked"})
+    public void getAllBasicPOSWithEagerRelationshipsIsNotEnabled() throws Exception {
+        BasicPOResource basicPOResource = new BasicPOResource(basicPOServiceMock);
+            when(basicPOServiceMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
+            MockMvc restBasicPOMockMvc = MockMvcBuilders.standaloneSetup(basicPOResource)
+            .setCustomArgumentResolvers(pageableArgumentResolver)
+            .setControllerAdvice(exceptionTranslator)
+            .setConversionService(createFormattingConversionService())
+            .setMessageConverters(jacksonMessageConverter).build();
+
+        restBasicPOMockMvc.perform(get("/api/basic-pos?eagerload=true"))
+        .andExpect(status().isOk());
+
+            verify(basicPOServiceMock, times(1)).findAllWithEagerRelationships(any());
+    }
+
     @Test
     public void getBasicPO() throws Exception {
         // Initialize the database

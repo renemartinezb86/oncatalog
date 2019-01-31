@@ -13,11 +13,10 @@
     "relationships": [
         {
             "relationshipType": "many-to-many",
-            "otherEntityRelationshipName": "characteristics(name)",
             "relationshipName": "basicPO",
             "otherEntityName": "basicPO",
-            "otherEntityField": "poId",
-            "ownerSide": true
+            "ownerSide": false,
+            "otherEntityRelationshipName": "characteristics"
         }
     ],
     "changelogDate": "20190128150253",

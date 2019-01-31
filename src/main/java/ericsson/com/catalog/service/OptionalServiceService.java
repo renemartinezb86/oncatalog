@@ -28,13 +28,7 @@ public interface OptionalServiceService {
      */
     Page<OptionalService> findAll(Pageable pageable);
 
-    /**
-     * Get all the OptionalService with eager load of many-to-many relationships.
-     *
-     * @return the list of entities
-     */
-    Page<OptionalService> findAllWithEagerRelationships(Pageable pageable);
-    
+
     /**
      * Get the "id" optionalService.
      *

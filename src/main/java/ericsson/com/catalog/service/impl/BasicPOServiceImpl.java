@@ -58,6 +58,15 @@ public class BasicPOServiceImpl implements BasicPOService {
         return basicPORepository.findAll(pageable);
     }
 
+    /**
+     * Get all the BasicPO with eager load of many-to-many relationships.
+     *
+     * @return the list of entities
+     */
+    public Page<BasicPO> findAllWithEagerRelationships(Pageable pageable) {
+        return basicPORepository.findAllWithEagerRelationships(pageable);
+    }
+    
 
     /**
      * Get one basicPO by id.
@@ -68,7 +77,7 @@ public class BasicPOServiceImpl implements BasicPOService {
     @Override
     public Optional<BasicPO> findOne(String id) {
         log.debug("Request to get BasicPO : {}", id);
-        return basicPORepository.findById(id);
+        return basicPORepository.findOneWithEagerRelationships(id);
     }
 
     /**

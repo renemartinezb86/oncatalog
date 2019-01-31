@@ -84,19 +84,13 @@ public class CharacteristicResource {
      * GET  /characteristics : get all the characteristics.
      *
      * @param pageable the pagination information
-     * @param eagerload flag to eager load entities from relationships (This is applicable for many-to-many)
      * @return the ResponseEntity with status 200 (OK) and the list of characteristics in body
      */
     @GetMapping("/characteristics")
-    public ResponseEntity<List<Characteristic>> getAllCharacteristics(Pageable pageable, @RequestParam(required = false, defaultValue = "false") boolean eagerload) {
+    public ResponseEntity<List<Characteristic>> getAllCharacteristics(Pageable pageable) {
         log.debug("REST request to get a page of Characteristics");
-        Page<Characteristic> page;
-        if (eagerload) {
-            page = characteristicService.findAllWithEagerRelationships(pageable);
-        } else {
-            page = characteristicService.findAll(pageable);
-        }
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, String.format("/api/characteristics?eagerload=%b", eagerload));
+        Page<Characteristic> page = characteristicService.findAll(pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/characteristics");
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
 

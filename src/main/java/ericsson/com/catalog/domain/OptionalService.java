@@ -1,6 +1,7 @@
 package ericsson.com.catalog.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Field;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -34,6 +35,7 @@ public class OptionalService implements Serializable {
 
     @DBRef
     @Field("basicPOS")
+    @JsonIgnore
     private Set<BasicPO> basicPOS = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
@@ -95,13 +97,13 @@ public class OptionalService implements Serializable {
 
     public OptionalService addBasicPO(BasicPO basicPO) {
         this.basicPOS.add(basicPO);
-        basicPO.getOptionalServices(serviceId)S().add(this);
+        basicPO.getOptionalServices().add(this);
         return this;
     }
 
     public OptionalService removeBasicPO(BasicPO basicPO) {
         this.basicPOS.remove(basicPO);
-        basicPO.getOptionalServices(serviceId)S().remove(this);
+        basicPO.getOptionalServices().remove(this);
         return this;
     }
 

@@ -21,6 +21,18 @@
                 </div>
 
                 <div class="form-group">
+                    <label jhiTranslate="onCatalogApp.basicPO.characteristics" for="field_characteristics">Characteristics</label>
+                    <select class="form-control" id="field_characteristics" multiple name="characteristics" [(ngModel)]="basicPO.characteristics">
+                        <option [ngValue]="getSelected(basicPO.characteristics, characteristicOption)" *ngFor="let characteristicOption of characteristics; trackBy: trackCharacteristicById">{{characteristicOption.name}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label jhiTranslate="onCatalogApp.basicPO.optionalServices" for="field_optionalServices">Optional Services</label>
+                    <select class="form-control" id="field_optionalServices" multiple name="optionalServices" [(ngModel)]="basicPO.optionalServices">
+                        <option [ngValue]="getSelected(basicPO.optionalServices, optionalServiceOption)" *ngFor="let optionalServiceOption of optionalservices; trackBy: trackOptionalServiceById">{{optionalServiceOption.serviceId}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
                     <label class="form-control-label" jhiTranslate="onCatalogApp.basicPO.catalog" for="field_catalog">Catalog</label>
                     <select class="form-control" id="field_catalog" name="catalog" [(ngModel)]="basicPO.catalog" >
                         <option [ngValue]="null"></option>

@@ -13,6 +13,18 @@
                 <dd>
                     <span>{{basicPO.name}}</span>
                 </dd>
+                <dt><span jhiTranslate="onCatalogApp.basicPO.characteristics">Characteristics</span></dt>
+                <dd>
+                    <span *ngFor="let characteristics of basicPO.characteristics; let last = last">
+                        <a [routerLink]="['/characteristic', characteristics?.id, 'view' ]">{{characteristics.name}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="onCatalogApp.basicPO.optionalServices">Optional Services</span></dt>
+                <dd>
+                    <span *ngFor="let optionalServices of basicPO.optionalServices; let last = last">
+                        <a [routerLink]="['/optional-service', optionalServices?.id, 'view' ]">{{optionalServices.serviceId}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
                 <dt><span jhiTranslate="onCatalogApp.basicPO.catalog">Catalog</span></dt>
                 <dd>
                     <div *ngIf="basicPO.catalog">

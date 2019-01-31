@@ -12,25 +12,27 @@
     ],
     "relationships": [
         {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "basicPO(poId)",
+            "relationshipName": "characteristics",
+            "otherEntityName": "characteristic",
+            "otherEntityField": "name",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "basicPO(poId)",
+            "relationshipName": "optionalServices",
+            "otherEntityName": "optionalService",
+            "otherEntityField": "serviceId",
+            "ownerSide": true
+        },
+        {
             "relationshipType": "many-to-one",
             "relationshipName": "catalog",
             "otherEntityName": "catalog",
             "otherEntityField": "name",
             "otherEntityRelationshipName": "basicPOs"
-        },
-        {
-            "relationshipType": "many-to-many",
-            "relationshipName": "characteristics",
-            "otherEntityName": "characteristic",
-            "ownerSide": false,
-            "otherEntityRelationshipName": "basicPO"
-        },
-        {
-            "relationshipType": "many-to-many",
-            "relationshipName": "optionalServices",
-            "otherEntityName": "optionalService",
-            "ownerSide": false,
-            "otherEntityRelationshipName": "basicPO"
         }
     ],
     "changelogDate": "20190128150252",

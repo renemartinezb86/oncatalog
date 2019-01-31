@@ -1,6 +1,7 @@
 package ericsson.com.catalog.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Field;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -31,6 +32,7 @@ public class Characteristic implements Serializable {
 
     @DBRef
     @Field("basicPOS")
+    @JsonIgnore
     private Set<BasicPO> basicPOS = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
@@ -79,13 +81,13 @@ public class Characteristic implements Serializable {
 
     public Characteristic addBasicPO(BasicPO basicPO) {
         this.basicPOS.add(basicPO);
-        basicPO.getCharacteristics(name)S().add(this);
+        basicPO.getCharacteristics().add(this);
         return this;
     }
 
     public Characteristic removeBasicPO(BasicPO basicPO) {
         this.basicPOS.remove(basicPO);
-        basicPO.getCharacteristics(name)S().remove(this);
+        basicPO.getCharacteristics().remove(this);
         return this;
     }
 

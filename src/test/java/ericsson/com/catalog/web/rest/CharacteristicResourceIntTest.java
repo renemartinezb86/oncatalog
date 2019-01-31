@@ -11,7 +11,6 @@ import ericsson.com.catalog.web.rest.errors.ExceptionTranslator;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -25,7 +24,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.validation.Validator;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -55,12 +53,6 @@ public class CharacteristicResourceIntTest {
 
     @Autowired
     private CharacteristicRepository characteristicRepository;
-
-    @Mock
-    private CharacteristicRepository characteristicRepositoryMock;
-
-    @Mock
-    private CharacteristicService characteristicServiceMock;
 
     @Autowired
     private CharacteristicService characteristicService;
@@ -176,39 +168,6 @@ public class CharacteristicResourceIntTest {
             .andExpect(jsonPath("$.[*].value").value(hasItem(DEFAULT_VALUE.toString())));
     }
     
-    @SuppressWarnings({"unchecked"})
-    public void getAllCharacteristicsWithEagerRelationshipsIsEnabled() throws Exception {
-        CharacteristicResource characteristicResource = new CharacteristicResource(characteristicServiceMock);
-        when(characteristicServiceMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
-
-        MockMvc restCharacteristicMockMvc = MockMvcBuilders.standaloneSetup(characteristicResource)
-            .setCustomArgumentResolvers(pageableArgumentResolver)
-            .setControllerAdvice(exceptionTranslator)
-            .setConversionService(createFormattingConversionService())
-            .setMessageConverters(jacksonMessageConverter).build();
-
-        restCharacteristicMockMvc.perform(get("/api/characteristics?eagerload=true"))
-        .andExpect(status().isOk());
-
-        verify(characteristicServiceMock, times(1)).findAllWithEagerRelationships(any());
-    }
-
-    @SuppressWarnings({"unchecked"})
-    public void getAllCharacteristicsWithEagerRelationshipsIsNotEnabled() throws Exception {
-        CharacteristicResource characteristicResource = new CharacteristicResource(characteristicServiceMock);
-            when(characteristicServiceMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
-            MockMvc restCharacteristicMockMvc = MockMvcBuilders.standaloneSetup(characteristicResource)
-            .setCustomArgumentResolvers(pageableArgumentResolver)
-            .setControllerAdvice(exceptionTranslator)
-            .setConversionService(createFormattingConversionService())
-            .setMessageConverters(jacksonMessageConverter).build();
-
-        restCharacteristicMockMvc.perform(get("/api/characteristics?eagerload=true"))
-        .andExpect(status().isOk());
-
-            verify(characteristicServiceMock, times(1)).findAllWithEagerRelationships(any());
-    }
-
     @Test
     public void getCharacteristic() throws Exception {
         // Initialize the database
