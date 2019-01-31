@@ -8,6 +8,10 @@ import { IBasicPO } from 'app/shared/model/basic-po.model';
 import { BasicPOService } from './basic-po.service';
 import { ICatalog } from 'app/shared/model/catalog.model';
 import { CatalogService } from 'app/entities/catalog';
+import { ICharacteristic } from 'app/shared/model/characteristic.model';
+import { CharacteristicService } from 'app/entities/characteristic';
+import { IOptionalService } from 'app/shared/model/optional-service.model';
+import { OptionalServiceService } from 'app/entities/optional-service';
 
 @Component({
     selector: 'jhi-basic-po-update',
@@ -19,10 +23,16 @@ export class BasicPOUpdateComponent implements OnInit {
 
     catalogs: ICatalog[];
 
+    characteristics: ICharacteristic[];
+
+    optionalservices: IOptionalService[];
+
     constructor(
         protected jhiAlertService: JhiAlertService,
         protected basicPOService: BasicPOService,
         protected catalogService: CatalogService,
+        protected characteristicService: CharacteristicService,
+        protected optionalServiceService: OptionalServiceService,
         protected activatedRoute: ActivatedRoute
     ) {}
 
@@ -38,6 +48,20 @@ export class BasicPOUpdateComponent implements OnInit {
                 map((response: HttpResponse<ICatalog[]>) => response.body)
             )
             .subscribe((res: ICatalog[]) => (this.catalogs = res), (res: HttpErrorResponse) => this.onError(res.message));
+        this.characteristicService
+            .query()
+            .pipe(
+                filter((mayBeOk: HttpResponse<ICharacteristic[]>) => mayBeOk.ok),
+                map((response: HttpResponse<ICharacteristic[]>) => response.body)
+            )
+            .subscribe((res: ICharacteristic[]) => (this.characteristics = res), (res: HttpErrorResponse) => this.onError(res.message));
+        this.optionalServiceService
+            .query()
+            .pipe(
+                filter((mayBeOk: HttpResponse<IOptionalService[]>) => mayBeOk.ok),
+                map((response: HttpResponse<IOptionalService[]>) => response.body)
+            )
+            .subscribe((res: IOptionalService[]) => (this.optionalservices = res), (res: HttpErrorResponse) => this.onError(res.message));
     }
 
     previousState() {
@@ -72,5 +96,24 @@ export class BasicPOUpdateComponent implements OnInit {
 
     trackCatalogById(index: number, item: ICatalog) {
         return item.id;
+    }
+
+    trackCharacteristicById(index: number, item: ICharacteristic) {
+        return item.id;
+    }
+
+    trackOptionalServiceById(index: number, item: IOptionalService) {
+        return item.id;
+    }
+
+    getSelected(selectedVals: Array<any>, option: any) {
+        if (selectedVals) {
+            for (let i = 0; i < selectedVals.length; i++) {
+                if (option.id === selectedVals[i].id) {
+                    return selectedVals[i];
+                }
+            }
+        }
+        return option;
     }
 }

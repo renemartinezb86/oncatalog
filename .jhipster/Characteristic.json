@@ -12,18 +12,19 @@
     ],
     "relationships": [
         {
-            "relationshipType": "many-to-one",
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "characteristics(name)",
             "relationshipName": "basicPO",
             "otherEntityName": "basicPO",
             "otherEntityField": "poId",
-            "otherEntityRelationshipName": "characteristics(name)"
+            "ownerSide": true
         }
     ],
     "changelogDate": "20190128150253",
     "entityTableName": "characteristic",
     "dto": "no",
-    "pagination": "infinite-scroll",
-    "service": "serviceClass",
+    "pagination": "pager",
+    "service": "serviceImpl",
     "jpaMetamodelFiltering": true,
     "fluentMethods": true,
     "clientRootFolder": "",

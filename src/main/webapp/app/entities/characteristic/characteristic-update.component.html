@@ -21,10 +21,9 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="onCatalogApp.characteristic.basicPO" for="field_basicPO">Basic PO</label>
-                    <select class="form-control" id="field_basicPO" name="basicPO" [(ngModel)]="characteristic.basicPO" >
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="basicPOOption.id === characteristic.basicPO?.id ? characteristic.basicPO : basicPOOption" *ngFor="let basicPOOption of basicpos; trackBy: trackBasicPOById">{{basicPOOption.poId}}</option>
+                    <label jhiTranslate="onCatalogApp.characteristic.basicPO" for="field_basicPO">Basic PO</label>
+                    <select class="form-control" id="field_basicPO" multiple name="basicPO" [(ngModel)]="characteristic.basicPOS">
+                        <option [ngValue]="getSelected(characteristic.basicPOS, basicPOOption)" *ngFor="let basicPOOption of basicpos; trackBy: trackBasicPOById">{{basicPOOption.poId}}</option>
                     </select>
                 </div>
             </div>

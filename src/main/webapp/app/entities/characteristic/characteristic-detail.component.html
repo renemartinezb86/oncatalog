@@ -15,9 +15,9 @@
                 </dd>
                 <dt><span jhiTranslate="onCatalogApp.characteristic.basicPO">Basic PO</span></dt>
                 <dd>
-                    <div *ngIf="characteristic.basicPO">
-                        <a [routerLink]="['/basic-po', characteristic.basicPO?.id, 'view']">{{characteristic.basicPO?.poId}}</a>
-                    </div>
+                    <span *ngFor="let basicPO of characteristic.basicPOS; let last = last">
+                        <a [routerLink]="['/basic-po', basicPO?.id, 'view' ]">{{basicPO.poId}}</a>{{last ? '' : ', '}}
+                    </span>
                 </dd>
             </dl>
 

@@ -26,10 +26,9 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="onCatalogApp.optionalService.basicPO" for="field_basicPO">Basic PO</label>
-                    <select class="form-control" id="field_basicPO" name="basicPO" [(ngModel)]="optionalService.basicPO" >
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="basicPOOption.id === optionalService.basicPO?.id ? optionalService.basicPO : basicPOOption" *ngFor="let basicPOOption of basicpos; trackBy: trackBasicPOById">{{basicPOOption.poId}}</option>
+                    <label jhiTranslate="onCatalogApp.optionalService.basicPO" for="field_basicPO">Basic PO</label>
+                    <select class="form-control" id="field_basicPO" multiple name="basicPO" [(ngModel)]="optionalService.basicPOS">
+                        <option [ngValue]="getSelected(optionalService.basicPOS, basicPOOption)" *ngFor="let basicPOOption of basicpos; trackBy: trackBasicPOById">{{basicPOOption.poId}}</option>
                     </select>
                 </div>
             </div>

@@ -5,7 +5,7 @@ export interface IOptionalService {
     serviceId?: string;
     cardinality?: string;
     group?: string;
-    basicPO?: IBasicPO;
+    basicPOS?: IBasicPO[];
 }
 
 export class OptionalService implements IOptionalService {
@@ -14,6 +14,6 @@ export class OptionalService implements IOptionalService {
         public serviceId?: string,
         public cardinality?: string,
         public group?: string,
-        public basicPO?: IBasicPO
+        public basicPOS?: IBasicPO[]
     ) {}
 }

@@ -73,4 +73,15 @@ export class CharacteristicUpdateComponent implements OnInit {
     trackBasicPOById(index: number, item: IBasicPO) {
         return item.id;
     }
+
+    getSelected(selectedVals: Array<any>, option: any) {
+        if (selectedVals) {
+            for (let i = 0; i < selectedVals.length; i++) {
+                if (option.id === selectedVals[i].id) {
+                    return selectedVals[i];
+                }
+            }
+        }
+        return option;
+    }
 }

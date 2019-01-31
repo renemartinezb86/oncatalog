@@ -1,13 +1,14 @@
 package ericsson.com.catalog.domain;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Field;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -32,9 +33,8 @@ public class OptionalService implements Serializable {
     private String group;
 
     @DBRef
-    @Field("basicPO")
-    @JsonIgnoreProperties("optionalServices(serviceId)S")
-    private BasicPO basicPO;
+    @Field("basicPOS")
+    private Set<BasicPO> basicPOS = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public String getId() {
@@ -84,17 +84,29 @@ public class OptionalService implements Serializable {
         this.group = group;
     }
 
-    public BasicPO getBasicPO() {
-        return basicPO;
+    public Set<BasicPO> getBasicPOS() {
+        return basicPOS;
     }
 
-    public OptionalService basicPO(BasicPO basicPO) {
-        this.basicPO = basicPO;
+    public OptionalService basicPOS(Set<BasicPO> basicPOS) {
+        this.basicPOS = basicPOS;
         return this;
     }
 
-    public void setBasicPO(BasicPO basicPO) {
-        this.basicPO = basicPO;
+    public OptionalService addBasicPO(BasicPO basicPO) {
+        this.basicPOS.add(basicPO);
+        basicPO.getOptionalServices(serviceId)S().add(this);
+        return this;
+    }
+
+    public OptionalService removeBasicPO(BasicPO basicPO) {
+        this.basicPOS.remove(basicPO);
+        basicPO.getOptionalServices(serviceId)S().remove(this);
+        return this;
+    }
+
+    public void setBasicPOS(Set<BasicPO> basicPOS) {
+        this.basicPOS = basicPOS;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
