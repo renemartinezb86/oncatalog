@@ -22,10 +22,11 @@ relationship OneToMany {
 	Catalog{basicPOs(poId)} to BasicPO{catalog(name)}
 }
 
-relationship ManyToOne {
+relationship ManyToMany {
 	Characteristic{basicPO(poId)} to BasicPO{characteristics(name)}
     OptionalService{basicPO(poId)} to BasicPO{optionalServices(serviceId)}
 }
 
-paginate * with infinite-scroll
+service all with serviceImpl
+paginate * with pager
 filter *
