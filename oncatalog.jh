@@ -20,8 +20,11 @@ entity OptionalService {
 
 relationship OneToMany {
 	Catalog{basicPOs(poId)} to BasicPO{catalog(name)}
-	BasicPO{characteristics(name)} to Characteristic{basicPO(poId)}
-    BasicPO{optionalServices(serviceId)} to OptionalService{basicPO(poId)}
+}
+
+relationship ManyToOne {
+	Characteristic{basicPO(poId)} to BasicPO{characteristics(name)}
+    OptionalService{basicPO(poId)} to BasicPO{optionalServices(serviceId)}
 }
 
 paginate * with infinite-scroll
