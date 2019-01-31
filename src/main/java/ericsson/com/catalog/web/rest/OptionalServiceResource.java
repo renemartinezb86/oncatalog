@@ -84,19 +84,13 @@ public class OptionalServiceResource {
      * GET  /optional-services : get all the optionalServices.
      *
      * @param pageable the pagination information
-     * @param eagerload flag to eager load entities from relationships (This is applicable for many-to-many)
      * @return the ResponseEntity with status 200 (OK) and the list of optionalServices in body
      */
     @GetMapping("/optional-services")
-    public ResponseEntity<List<OptionalService>> getAllOptionalServices(Pageable pageable, @RequestParam(required = false, defaultValue = "false") boolean eagerload) {
+    public ResponseEntity<List<OptionalService>> getAllOptionalServices(Pageable pageable) {
         log.debug("REST request to get a page of OptionalServices");
-        Page<OptionalService> page;
-        if (eagerload) {
-            page = optionalServiceService.findAllWithEagerRelationships(pageable);
-        } else {
-            page = optionalServiceService.findAll(pageable);
-        }
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, String.format("/api/optional-services?eagerload=%b", eagerload));
+        Page<OptionalService> page = optionalServiceService.findAll(pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/optional-services");
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
 

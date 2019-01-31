@@ -58,15 +58,6 @@ public class CharacteristicServiceImpl implements CharacteristicService {
         return characteristicRepository.findAll(pageable);
     }
 
-    /**
-     * Get all the Characteristic with eager load of many-to-many relationships.
-     *
-     * @return the list of entities
-     */
-    public Page<Characteristic> findAllWithEagerRelationships(Pageable pageable) {
-        return characteristicRepository.findAllWithEagerRelationships(pageable);
-    }
-    
 
     /**
      * Get one characteristic by id.
@@ -77,7 +68,7 @@ public class CharacteristicServiceImpl implements CharacteristicService {
     @Override
     public Optional<Characteristic> findOne(String id) {
         log.debug("Request to get Characteristic : {}", id);
-        return characteristicRepository.findOneWithEagerRelationships(id);
+        return characteristicRepository.findById(id);
     }
 
     /**

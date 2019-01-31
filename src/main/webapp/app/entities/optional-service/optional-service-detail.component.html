@@ -17,12 +17,6 @@
                 <dd>
                     <span>{{optionalService.group}}</span>
                 </dd>
-                <dt><span jhiTranslate="onCatalogApp.optionalService.basicPO">Basic PO</span></dt>
-                <dd>
-                    <span *ngFor="let basicPO of optionalService.basicPOS; let last = last">
-                        <a [routerLink]="['/basic-po', basicPO?.id, 'view' ]">{{basicPO.poId}}</a>{{last ? '' : ', '}}
-                    </span>
-                </dd>
             </dl>
 
             <button type="submit"

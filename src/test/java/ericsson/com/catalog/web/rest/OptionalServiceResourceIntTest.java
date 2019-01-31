@@ -11,7 +11,6 @@ import ericsson.com.catalog.web.rest.errors.ExceptionTranslator;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -25,7 +24,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.validation.Validator;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -58,12 +56,6 @@ public class OptionalServiceResourceIntTest {
 
     @Autowired
     private OptionalServiceRepository optionalServiceRepository;
-
-    @Mock
-    private OptionalServiceRepository optionalServiceRepositoryMock;
-
-    @Mock
-    private OptionalServiceService optionalServiceServiceMock;
 
     @Autowired
     private OptionalServiceService optionalServiceService;
@@ -182,39 +174,6 @@ public class OptionalServiceResourceIntTest {
             .andExpect(jsonPath("$.[*].group").value(hasItem(DEFAULT_GROUP.toString())));
     }
     
-    @SuppressWarnings({"unchecked"})
-    public void getAllOptionalServicesWithEagerRelationshipsIsEnabled() throws Exception {
-        OptionalServiceResource optionalServiceResource = new OptionalServiceResource(optionalServiceServiceMock);
-        when(optionalServiceServiceMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
-
-        MockMvc restOptionalServiceMockMvc = MockMvcBuilders.standaloneSetup(optionalServiceResource)
-            .setCustomArgumentResolvers(pageableArgumentResolver)
-            .setControllerAdvice(exceptionTranslator)
-            .setConversionService(createFormattingConversionService())
-            .setMessageConverters(jacksonMessageConverter).build();
-
-        restOptionalServiceMockMvc.perform(get("/api/optional-services?eagerload=true"))
-        .andExpect(status().isOk());
-
-        verify(optionalServiceServiceMock, times(1)).findAllWithEagerRelationships(any());
-    }
-
-    @SuppressWarnings({"unchecked"})
-    public void getAllOptionalServicesWithEagerRelationshipsIsNotEnabled() throws Exception {
-        OptionalServiceResource optionalServiceResource = new OptionalServiceResource(optionalServiceServiceMock);
-            when(optionalServiceServiceMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
-            MockMvc restOptionalServiceMockMvc = MockMvcBuilders.standaloneSetup(optionalServiceResource)
-            .setCustomArgumentResolvers(pageableArgumentResolver)
-            .setControllerAdvice(exceptionTranslator)
-            .setConversionService(createFormattingConversionService())
-            .setMessageConverters(jacksonMessageConverter).build();
-
-        restOptionalServiceMockMvc.perform(get("/api/optional-services?eagerload=true"))
-        .andExpect(status().isOk());
-
-            verify(optionalServiceServiceMock, times(1)).findAllWithEagerRelationships(any());
-    }
-
     @Test
     public void getOptionalService() throws Exception {
         // Initialize the database

@@ -17,11 +17,10 @@
     "relationships": [
         {
             "relationshipType": "many-to-many",
-            "otherEntityRelationshipName": "optionalServices(serviceId)",
             "relationshipName": "basicPO",
             "otherEntityName": "basicPO",
-            "otherEntityField": "poId",
-            "ownerSide": true
+            "ownerSide": false,
+            "otherEntityRelationshipName": "optionalServices"
         }
     ],
     "changelogDate": "20190128150254",

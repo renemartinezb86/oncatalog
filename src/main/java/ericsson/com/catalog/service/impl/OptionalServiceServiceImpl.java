@@ -58,15 +58,6 @@ public class OptionalServiceServiceImpl implements OptionalServiceService {
         return optionalServiceRepository.findAll(pageable);
     }
 
-    /**
-     * Get all the OptionalService with eager load of many-to-many relationships.
-     *
-     * @return the list of entities
-     */
-    public Page<OptionalService> findAllWithEagerRelationships(Pageable pageable) {
-        return optionalServiceRepository.findAllWithEagerRelationships(pageable);
-    }
-    
 
     /**
      * Get one optionalService by id.
@@ -77,7 +68,7 @@ public class OptionalServiceServiceImpl implements OptionalServiceService {
     @Override
     public Optional<OptionalService> findOne(String id) {
         log.debug("Request to get OptionalService : {}", id);
-        return optionalServiceRepository.findOneWithEagerRelationships(id);
+        return optionalServiceRepository.findById(id);
     }
 
     /**

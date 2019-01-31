@@ -28,13 +28,7 @@ public interface CharacteristicService {
      */
     Page<Characteristic> findAll(Pageable pageable);
 
-    /**
-     * Get all the Characteristic with eager load of many-to-many relationships.
-     *
-     * @return the list of entities
-     */
-    Page<Characteristic> findAllWithEagerRelationships(Pageable pageable);
-    
+
     /**
      * Get the "id" characteristic.
      *

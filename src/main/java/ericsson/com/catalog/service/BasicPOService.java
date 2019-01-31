@@ -28,7 +28,13 @@ public interface BasicPOService {
      */
     Page<BasicPO> findAll(Pageable pageable);
 
-
+    /**
+     * Get all the BasicPO with eager load of many-to-many relationships.
+     *
+     * @return the list of entities
+     */
+    Page<BasicPO> findAllWithEagerRelationships(Pageable pageable);
+    
     /**
      * Get the "id" basicPO.
      *
