@@ -12,6 +12,13 @@
     ],
     "relationships": [
         {
+            "relationshipType": "many-to-one",
+            "relationshipName": "catalog",
+            "otherEntityName": "catalog",
+            "otherEntityField": "name",
+            "otherEntityRelationshipName": "basicPOs"
+        },
+        {
             "relationshipType": "one-to-many",
             "relationshipName": "characteristics",
             "otherEntityName": "characteristic",
@@ -22,12 +29,6 @@
             "relationshipName": "optionalServices",
             "otherEntityName": "optionalService",
             "otherEntityRelationshipName": "basicPO"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "catalog",
-            "otherEntityName": "catalog",
-            "otherEntityField": "name"
         }
     ],
     "changelogDate": "20190128150252",

@@ -30,7 +30,7 @@ public class Characteristic implements Serializable {
 
     @DBRef
     @Field("basicPO")
-    @JsonIgnoreProperties("characteristics")
+    @JsonIgnoreProperties("characteristics(name)S")
     private BasicPO basicPO;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove

@@ -18,9 +18,9 @@
             },
             "poId": "Po Id",
             "name": "Name",
+            "catalog": "Catalog",
             "characteristics": "Characteristics",
-            "optionalServices": "Optional Services",
-            "catalog": "Catalog"
+            "optionalServices": "Optional Services"
         }
     }
 }

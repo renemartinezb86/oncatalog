@@ -33,7 +33,7 @@ public class OptionalService implements Serializable {
 
     @DBRef
     @Field("basicPO")
-    @JsonIgnoreProperties("optionalServices")
+    @JsonIgnoreProperties("optionalServices(serviceId)S")
     private BasicPO basicPO;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
