@@ -23,8 +23,8 @@ relationship OneToMany {
 }
 
 relationship ManyToMany {
-	Characteristic{basicPO(poId)} to BasicPO{characteristics(name)}
-    OptionalService{basicPO(poId)} to BasicPO{optionalServices(serviceId)}
+	BasicPO{characteristics(name)} to Characteristic{basicPO(poId)}
+    BasicPO{optionalServices(serviceId)} to OptionalService{basicPO(poId)}
 }
 
 service all with serviceImpl
