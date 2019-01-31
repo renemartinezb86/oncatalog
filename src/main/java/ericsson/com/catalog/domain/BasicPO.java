@@ -38,10 +38,14 @@ public class BasicPO implements Serializable {
 
     @DBRef
     @Field("characteristics")
+    @JsonIgnore
     private Set<Characteristic> characteristics = new HashSet<>();
+
     @DBRef
     @Field("optionalServices")
+    @JsonIgnore
     private Set<OptionalService> optionalServices = new HashSet<>();
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public String getId() {
         return id;
@@ -101,13 +105,13 @@ public class BasicPO implements Serializable {
 
     public BasicPO addCharacteristics(Characteristic characteristic) {
         this.characteristics.add(characteristic);
-        characteristic.setBasicPO(this);
+        characteristic.getBasicPOS().add(this);
         return this;
     }
 
     public BasicPO removeCharacteristics(Characteristic characteristic) {
         this.characteristics.remove(characteristic);
-        characteristic.setBasicPO(null);
+        characteristic.getBasicPOS().remove(this);
         return this;
     }
 
@@ -126,13 +130,13 @@ public class BasicPO implements Serializable {
 
     public BasicPO addOptionalServices(OptionalService optionalService) {
         this.optionalServices.add(optionalService);
-        optionalService.setBasicPO(this);
+        optionalService.getBasicPOS().add(this);
         return this;
     }
 
     public BasicPO removeOptionalServices(OptionalService optionalService) {
         this.optionalServices.remove(optionalService);
-        optionalService.setBasicPO(null);
+        optionalService.getBasicPOS().remove(this);
         return this;
     }
 

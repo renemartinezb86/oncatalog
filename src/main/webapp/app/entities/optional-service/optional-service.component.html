@@ -28,26 +28,20 @@
     <div class="table-responsive" *ngIf="optionalServices">
         <table class="table table-striped">
             <thead>
-            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
             <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="serviceId"><span jhiTranslate="onCatalogApp.optionalService.serviceId">Service Id</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="cardinality"><span jhiTranslate="onCatalogApp.optionalService.cardinality">Cardinality</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="group"><span jhiTranslate="onCatalogApp.optionalService.group">Group</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="basicPO.poId"><span jhiTranslate="onCatalogApp.optionalService.basicPO">Basic PO</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th></th>
             </tr>
             </thead>
-            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+            <tbody>
             <tr *ngFor="let optionalService of optionalServices ;trackBy: trackId">
                 <td><a [routerLink]="['/optional-service', optionalService.id, 'view' ]">{{optionalService.id}}</a></td>
                 <td>{{optionalService.serviceId}}</td>
                 <td>{{optionalService.cardinality}}</td>
                 <td>{{optionalService.group}}</td>
-                <td>
-                    <div *ngIf="optionalService.basicPO">
-                        <a [routerLink]="['../basic-po', optionalService.basicPO?.id, 'view' ]" >{{optionalService.basicPO?.poId}}</a>
-                    </div>
-                </td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"
@@ -75,5 +69,14 @@
             </tr>
             </tbody>
         </table>
+    </div>
+    <!-- Pager is not implemented yet, so this is normal pagination instead -->
+    <div *ngIf="optionalServices && optionalServices.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
     </div>
 </div>

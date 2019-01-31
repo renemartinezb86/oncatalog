@@ -19,23 +19,25 @@
             "otherEntityRelationshipName": "basicPOs"
         },
         {
-            "relationshipType": "one-to-many",
+            "relationshipType": "many-to-many",
             "relationshipName": "characteristics",
             "otherEntityName": "characteristic",
+            "ownerSide": false,
             "otherEntityRelationshipName": "basicPO"
         },
         {
-            "relationshipType": "one-to-many",
+            "relationshipType": "many-to-many",
             "relationshipName": "optionalServices",
             "otherEntityName": "optionalService",
+            "ownerSide": false,
             "otherEntityRelationshipName": "basicPO"
         }
     ],
     "changelogDate": "20190128150252",
     "entityTableName": "basic_po",
     "dto": "no",
-    "pagination": "infinite-scroll",
-    "service": "serviceClass",
+    "pagination": "pager",
+    "service": "serviceImpl",
     "jpaMetamodelFiltering": true,
     "fluentMethods": true,
     "clientRootFolder": "",

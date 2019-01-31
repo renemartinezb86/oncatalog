@@ -1,13 +1,14 @@
 package ericsson.com.catalog.domain;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Field;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -29,9 +30,8 @@ public class Characteristic implements Serializable {
     private String value;
 
     @DBRef
-    @Field("basicPO")
-    @JsonIgnoreProperties("characteristics(name)S")
-    private BasicPO basicPO;
+    @Field("basicPOS")
+    private Set<BasicPO> basicPOS = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public String getId() {
@@ -68,17 +68,29 @@ public class Characteristic implements Serializable {
         this.value = value;
     }
 
-    public BasicPO getBasicPO() {
-        return basicPO;
+    public Set<BasicPO> getBasicPOS() {
+        return basicPOS;
     }
 
-    public Characteristic basicPO(BasicPO basicPO) {
-        this.basicPO = basicPO;
+    public Characteristic basicPOS(Set<BasicPO> basicPOS) {
+        this.basicPOS = basicPOS;
         return this;
     }
 
-    public void setBasicPO(BasicPO basicPO) {
-        this.basicPO = basicPO;
+    public Characteristic addBasicPO(BasicPO basicPO) {
+        this.basicPOS.add(basicPO);
+        basicPO.getCharacteristics(name)S().add(this);
+        return this;
+    }
+
+    public Characteristic removeBasicPO(BasicPO basicPO) {
+        this.basicPOS.remove(basicPO);
+        basicPO.getCharacteristics(name)S().remove(this);
+        return this;
+    }
+
+    public void setBasicPOS(Set<BasicPO> basicPOS) {
+        this.basicPOS = basicPOS;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
