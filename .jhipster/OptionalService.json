@@ -19,7 +19,8 @@
             "relationshipType": "many-to-one",
             "relationshipName": "basicPO",
             "otherEntityName": "basicPO",
-            "otherEntityField": "poId"
+            "otherEntityField": "poId",
+            "otherEntityRelationshipName": "optionalServices(serviceId)"
         }
     ],
     "changelogDate": "20190128150254",

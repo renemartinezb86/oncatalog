@@ -15,7 +15,8 @@
             "relationshipType": "many-to-one",
             "relationshipName": "basicPO",
             "otherEntityName": "basicPO",
-            "otherEntityField": "poId"
+            "otherEntityField": "poId",
+            "otherEntityRelationshipName": "characteristics(name)"
         }
     ],
     "changelogDate": "20190128150253",

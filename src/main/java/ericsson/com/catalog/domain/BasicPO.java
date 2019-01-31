@@ -32,16 +32,16 @@ public class BasicPO implements Serializable {
     private String name;
 
     @DBRef
+    @Field("catalog")
+    @JsonIgnoreProperties("basicPOs")
+    private Catalog catalog;
+
+    @DBRef
     @Field("characteristics")
     private Set<Characteristic> characteristics = new HashSet<>();
     @DBRef
     @Field("optionalServices")
     private Set<OptionalService> optionalServices = new HashSet<>();
-    @DBRef
-    @Field("catalog")
-    @JsonIgnoreProperties("basicPOs")
-    private Catalog catalog;
-
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public String getId() {
         return id;
@@ -75,6 +75,19 @@ public class BasicPO implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Catalog getCatalog() {
+        return catalog;
+    }
+
+    public BasicPO catalog(Catalog catalog) {
+        this.catalog = catalog;
+        return this;
+    }
+
+    public void setCatalog(Catalog catalog) {
+        this.catalog = catalog;
     }
 
     public Set<Characteristic> getCharacteristics() {
@@ -125,19 +138,6 @@ public class BasicPO implements Serializable {
 
     public void setOptionalServices(Set<OptionalService> optionalServices) {
         this.optionalServices = optionalServices;
-    }
-
-    public Catalog getCatalog() {
-        return catalog;
-    }
-
-    public BasicPO catalog(Catalog catalog) {
-        this.catalog = catalog;
-        return this;
-    }
-
-    public void setCatalog(Catalog catalog) {
-        this.catalog = catalog;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
