@@ -1,0 +1,35 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="netResource">
+            <h2><span jhiTranslate="onCatalogApp.netResource.detail.title">Net Resource</span> {{netResource.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="onCatalogApp.netResource.name">Name</span></dt>
+                <dd>
+                    <span>{{netResource.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="onCatalogApp.netResource.parameter">Parameter</span></dt>
+                <dd>
+                    <span>{{netResource.parameter}}</span>
+                </dd>
+                <dt><span jhiTranslate="onCatalogApp.netResource.value">Value</span></dt>
+                <dd>
+                    <span>{{netResource.value}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/net-resource', netResource.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

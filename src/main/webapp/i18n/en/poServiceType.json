@@ -1,0 +1,10 @@
+{
+    "onCatalogApp": {
+        "PoServiceType": {
+            "null": "",
+            "BASIC": "BASIC",
+            "SERVICE": "SERVICE",
+            "BARRING": "BARRING"
+        }
+    }
+}

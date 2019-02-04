@@ -10,6 +10,14 @@ import { ICharacteristic } from 'app/shared/model/characteristic.model';
 import { CharacteristicService } from 'app/entities/characteristic';
 import { IOptionalService } from 'app/shared/model/optional-service.model';
 import { OptionalServiceService } from 'app/entities/optional-service';
+import { IPoService } from 'app/shared/model/po-service.model';
+import { PoServiceService } from 'app/entities/po-service';
+import { INetResource } from 'app/shared/model/net-resource.model';
+import { NetResourceService } from 'app/entities/net-resource';
+import { IChargingSystem } from 'app/shared/model/charging-system.model';
+import { ChargingSystemService } from 'app/entities/charging-system';
+import { IBSCS } from 'app/shared/model/bscs.model';
+import { BSCSService } from 'app/entities/bscs';
 import { ICatalog } from 'app/shared/model/catalog.model';
 import { CatalogService } from 'app/entities/catalog';
 
@@ -25,6 +33,14 @@ export class BasicPOUpdateComponent implements OnInit {
 
     optionalservices: IOptionalService[];
 
+    poservices: IPoService[];
+
+    netresources: INetResource[];
+
+    chargingsystems: IChargingSystem[];
+
+    bscs: IBSCS[];
+
     catalogs: ICatalog[];
 
     constructor(
@@ -32,6 +48,10 @@ export class BasicPOUpdateComponent implements OnInit {
         protected basicPOService: BasicPOService,
         protected characteristicService: CharacteristicService,
         protected optionalServiceService: OptionalServiceService,
+        protected poServiceService: PoServiceService,
+        protected netResourceService: NetResourceService,
+        protected chargingSystemService: ChargingSystemService,
+        protected bSCSService: BSCSService,
         protected catalogService: CatalogService,
         protected activatedRoute: ActivatedRoute
     ) {}
@@ -55,6 +75,34 @@ export class BasicPOUpdateComponent implements OnInit {
                 map((response: HttpResponse<IOptionalService[]>) => response.body)
             )
             .subscribe((res: IOptionalService[]) => (this.optionalservices = res), (res: HttpErrorResponse) => this.onError(res.message));
+        this.poServiceService
+            .query()
+            .pipe(
+                filter((mayBeOk: HttpResponse<IPoService[]>) => mayBeOk.ok),
+                map((response: HttpResponse<IPoService[]>) => response.body)
+            )
+            .subscribe((res: IPoService[]) => (this.poservices = res), (res: HttpErrorResponse) => this.onError(res.message));
+        this.netResourceService
+            .query()
+            .pipe(
+                filter((mayBeOk: HttpResponse<INetResource[]>) => mayBeOk.ok),
+                map((response: HttpResponse<INetResource[]>) => response.body)
+            )
+            .subscribe((res: INetResource[]) => (this.netresources = res), (res: HttpErrorResponse) => this.onError(res.message));
+        this.chargingSystemService
+            .query()
+            .pipe(
+                filter((mayBeOk: HttpResponse<IChargingSystem[]>) => mayBeOk.ok),
+                map((response: HttpResponse<IChargingSystem[]>) => response.body)
+            )
+            .subscribe((res: IChargingSystem[]) => (this.chargingsystems = res), (res: HttpErrorResponse) => this.onError(res.message));
+        this.bSCSService
+            .query()
+            .pipe(
+                filter((mayBeOk: HttpResponse<IBSCS[]>) => mayBeOk.ok),
+                map((response: HttpResponse<IBSCS[]>) => response.body)
+            )
+            .subscribe((res: IBSCS[]) => (this.bscs = res), (res: HttpErrorResponse) => this.onError(res.message));
         this.catalogService
             .query()
             .pipe(
@@ -99,6 +147,22 @@ export class BasicPOUpdateComponent implements OnInit {
     }
 
     trackOptionalServiceById(index: number, item: IOptionalService) {
+        return item.id;
+    }
+
+    trackPoServiceById(index: number, item: IPoService) {
+        return item.id;
+    }
+
+    trackNetResourceById(index: number, item: INetResource) {
+        return item.id;
+    }
+
+    trackChargingSystemById(index: number, item: IChargingSystem) {
+        return item.id;
+    }
+
+    trackBSCSById(index: number, item: IBSCS) {
         return item.id;
     }
 

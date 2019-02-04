@@ -1,0 +1,31 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="chargingSystem">
+            <h2><span jhiTranslate="onCatalogApp.chargingSystem.detail.title">Charging System</span> {{chargingSystem.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="onCatalogApp.chargingSystem.serviceName">Service Name</span></dt>
+                <dd>
+                    <span>{{chargingSystem.serviceName}}</span>
+                </dd>
+                <dt><span jhiTranslate="onCatalogApp.chargingSystem.offerTemplate">Offer Template</span></dt>
+                <dd>
+                    <span>{{chargingSystem.offerTemplate}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/charging-system', chargingSystem.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

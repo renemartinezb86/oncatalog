@@ -33,6 +33,30 @@
                     </select>
                 </div>
                 <div class="form-group">
+                    <label jhiTranslate="onCatalogApp.basicPO.poServices" for="field_poServices">Po Services</label>
+                    <select class="form-control" id="field_poServices" multiple name="poServices" [(ngModel)]="basicPO.poServices">
+                        <option [ngValue]="getSelected(basicPO.poServices, poServiceOption)" *ngFor="let poServiceOption of poservices; trackBy: trackPoServiceById">{{poServiceOption.name}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label jhiTranslate="onCatalogApp.basicPO.netResources" for="field_netResources">Net Resources</label>
+                    <select class="form-control" id="field_netResources" multiple name="netResources" [(ngModel)]="basicPO.netResources">
+                        <option [ngValue]="getSelected(basicPO.netResources, netResourceOption)" *ngFor="let netResourceOption of netresources; trackBy: trackNetResourceById">{{netResourceOption.name}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label jhiTranslate="onCatalogApp.basicPO.chargingSystem" for="field_chargingSystem">Charging System</label>
+                    <select class="form-control" id="field_chargingSystem" multiple name="chargingSystem" [(ngModel)]="basicPO.chargingSystems">
+                        <option [ngValue]="getSelected(basicPO.chargingSystems, chargingSystemOption)" *ngFor="let chargingSystemOption of chargingsystems; trackBy: trackChargingSystemById">{{chargingSystemOption.offerTemplate}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label jhiTranslate="onCatalogApp.basicPO.bSCSs" for="field_bSCSs">B SC Ss</label>
+                    <select class="form-control" id="field_bSCSs" multiple name="bSCSs" [(ngModel)]="basicPO.bSCSses">
+                        <option [ngValue]="getSelected(basicPO.bSCSses, bSCSOption)" *ngFor="let bSCSOption of bscs; trackBy: trackBSCSById">{{bSCSOption.bscsService}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
                     <label class="form-control-label" jhiTranslate="onCatalogApp.basicPO.catalog" for="field_catalog">Catalog</label>
                     <select class="form-control" id="field_catalog" name="catalog" [(ngModel)]="basicPO.catalog" >
                         <option [ngValue]="null"></option>

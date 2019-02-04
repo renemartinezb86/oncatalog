@@ -28,6 +28,38 @@
             "ownerSide": true
         },
         {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "basicPO(poId)",
+            "relationshipName": "poServices",
+            "otherEntityName": "poService",
+            "otherEntityField": "name",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "basicPO(poId)",
+            "relationshipName": "netResources",
+            "otherEntityName": "netResource",
+            "otherEntityField": "name",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "basicPO(poId)",
+            "relationshipName": "chargingSystem",
+            "otherEntityName": "chargingSystem",
+            "otherEntityField": "offerTemplate",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "basicPO(poId)",
+            "relationshipName": "bSCSs",
+            "otherEntityName": "bSCS",
+            "otherEntityField": "bscsService",
+            "ownerSide": true
+        },
+        {
             "relationshipType": "many-to-one",
             "relationshipName": "catalog",
             "otherEntityName": "catalog",

@@ -1,0 +1,25 @@
+{
+    "onCatalogApp": {
+        "netResource": {
+            "home": {
+                "title": "Net Resources",
+                "createLabel": "Crear nuevo Net Resource",
+                "createOrEditLabel": "Crear o editar Net Resource",
+                "search": "Search for Net Resource"
+            },
+            "created": "Un nuevo Net Resource ha sido creado con el identificador {{ param }}",
+            "updated": "Un Net Resource ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Net Resource ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Net Resource {{ id }}?"
+            },
+            "detail": {
+                "title": "Net Resource"
+            },
+            "name": "Name",
+            "parameter": "Parameter",
+            "value": "Value",
+            "basicPO": "Basic PO"
+        }
+    }
+}

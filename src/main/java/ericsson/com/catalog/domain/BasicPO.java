@@ -39,6 +39,22 @@ public class BasicPO implements Serializable {
     private Set<OptionalService> optionalServices = new HashSet<>();
 
     @DBRef
+    @Field("poServices")
+    private Set<PoService> poServices = new HashSet<>();
+
+    @DBRef
+    @Field("netResources")
+    private Set<NetResource> netResources = new HashSet<>();
+
+    @DBRef
+    @Field("chargingSystems")
+    private Set<ChargingSystem> chargingSystems = new HashSet<>();
+
+    @DBRef
+    @Field("bSCSses")
+    private Set<BSCS> bSCSses = new HashSet<>();
+
+    @DBRef
     @Field("catalog")
     @JsonIgnoreProperties("basicPOs")
     private Catalog catalog;
@@ -126,6 +142,106 @@ public class BasicPO implements Serializable {
 
     public void setOptionalServices(Set<OptionalService> optionalServices) {
         this.optionalServices = optionalServices;
+    }
+
+    public Set<PoService> getPoServices() {
+        return poServices;
+    }
+
+    public BasicPO poServices(Set<PoService> poServices) {
+        this.poServices = poServices;
+        return this;
+    }
+
+    public BasicPO addPoServices(PoService poService) {
+        this.poServices.add(poService);
+        poService.getBasicPO(poId)S().add(this);
+        return this;
+    }
+
+    public BasicPO removePoServices(PoService poService) {
+        this.poServices.remove(poService);
+        poService.getBasicPO(poId)S().remove(this);
+        return this;
+    }
+
+    public void setPoServices(Set<PoService> poServices) {
+        this.poServices = poServices;
+    }
+
+    public Set<NetResource> getNetResources() {
+        return netResources;
+    }
+
+    public BasicPO netResources(Set<NetResource> netResources) {
+        this.netResources = netResources;
+        return this;
+    }
+
+    public BasicPO addNetResources(NetResource netResource) {
+        this.netResources.add(netResource);
+        netResource.getBasicPO(poId)S().add(this);
+        return this;
+    }
+
+    public BasicPO removeNetResources(NetResource netResource) {
+        this.netResources.remove(netResource);
+        netResource.getBasicPO(poId)S().remove(this);
+        return this;
+    }
+
+    public void setNetResources(Set<NetResource> netResources) {
+        this.netResources = netResources;
+    }
+
+    public Set<ChargingSystem> getChargingSystems() {
+        return chargingSystems;
+    }
+
+    public BasicPO chargingSystems(Set<ChargingSystem> chargingSystems) {
+        this.chargingSystems = chargingSystems;
+        return this;
+    }
+
+    public BasicPO addChargingSystem(ChargingSystem chargingSystem) {
+        this.chargingSystems.add(chargingSystem);
+        chargingSystem.getBasicPO(poId)S().add(this);
+        return this;
+    }
+
+    public BasicPO removeChargingSystem(ChargingSystem chargingSystem) {
+        this.chargingSystems.remove(chargingSystem);
+        chargingSystem.getBasicPO(poId)S().remove(this);
+        return this;
+    }
+
+    public void setChargingSystems(Set<ChargingSystem> chargingSystems) {
+        this.chargingSystems = chargingSystems;
+    }
+
+    public Set<BSCS> getBSCSses() {
+        return bSCSses;
+    }
+
+    public BasicPO bSCSses(Set<BSCS> bSCS) {
+        this.bSCSses = bSCS;
+        return this;
+    }
+
+    public BasicPO addBSCSs(BSCS bSCS) {
+        this.bSCSses.add(bSCS);
+        bSCS.getBasicPO(poId)S().add(this);
+        return this;
+    }
+
+    public BasicPO removeBSCSs(BSCS bSCS) {
+        this.bSCSses.remove(bSCS);
+        bSCS.getBasicPO(poId)S().remove(this);
+        return this;
+    }
+
+    public void setBSCSses(Set<BSCS> bSCS) {
+        this.bSCSses = bSCS;
     }
 
     public Catalog getCatalog() {
