@@ -18,6 +18,33 @@ entity OptionalService {
     group String
 }
 
+entity PoService {
+	name String,
+    type PoServiceType
+}
+
+enum PoServiceType {
+	BASIC, SERVICE, BARRING
+}
+
+entity NetResource {
+	name String,
+    parameter String,
+    value String
+}
+
+entity ChargingSystem {
+	serviceName String,
+    offerTemplate String,
+}
+
+entity BSCS {
+	serviceName String,
+    bscsService String,
+}
+
+/*Resources, Relations/Rate Plans*/
+
 relationship OneToMany {
 	Catalog{basicPOs(poId)} to BasicPO{catalog(name)}
 }
@@ -25,6 +52,10 @@ relationship OneToMany {
 relationship ManyToMany {
 	BasicPO{characteristics(name)} to Characteristic{basicPO(poId)}
     BasicPO{optionalServices(serviceId)} to OptionalService{basicPO(poId)}
+    BasicPO{poServices(name)} to PoService{basicPO(poId)}
+    BasicPO{netResources(name)} to NetResource{basicPO(poId)}
+    BasicPO{chargingSystem(offerTemplate)} to ChargingSystem{basicPO(poId)}
+    BasicPO{BSCSs(bscsService)} to BSCS{basicPO(poId)}
 }
 
 service all with serviceImpl
