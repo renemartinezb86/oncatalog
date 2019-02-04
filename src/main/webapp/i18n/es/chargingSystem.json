@@ -1,0 +1,24 @@
+{
+    "onCatalogApp": {
+        "chargingSystem": {
+            "home": {
+                "title": "Charging Systems",
+                "createLabel": "Crear nuevo Charging System",
+                "createOrEditLabel": "Crear o editar Charging System",
+                "search": "Search for Charging System"
+            },
+            "created": "Un nuevo Charging System ha sido creado con el identificador {{ param }}",
+            "updated": "Un Charging System ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Charging System ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Charging System {{ id }}?"
+            },
+            "detail": {
+                "title": "Charging System"
+            },
+            "serviceName": "Service Name",
+            "offerTemplate": "Offer Template",
+            "basicPO": "Basic PO"
+        }
+    }
+}

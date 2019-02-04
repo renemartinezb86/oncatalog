@@ -20,6 +20,10 @@
             "name": "Name",
             "characteristics": "Characteristics",
             "optionalServices": "Optional Services",
+            "poServices": "Po Services",
+            "netResources": "Net Resources",
+            "chargingSystem": "Charging System",
+            "bSCSs": "B SC Ss",
             "catalog": "Catalog"
         }
     }

@@ -12,6 +12,10 @@
                 "basicPo": "Basic PO",
                 "characteristic": "Characteristic",
                 "optionalService": "Optional Service",
+                "poService": "Po Service",
+                "netResource": "Net Resource",
+                "chargingSystem": "Charging System",
+                "bscs": "BSCS",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

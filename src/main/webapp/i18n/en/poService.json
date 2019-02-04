@@ -1,0 +1,24 @@
+{
+    "onCatalogApp": {
+        "poService": {
+            "home": {
+                "title": "Po Services",
+                "createLabel": "Create a new Po Service",
+                "createOrEditLabel": "Create or edit a Po Service",
+                "search": "Search for Po Service"
+            },
+            "created": "A new Po Service is created with identifier {{ param }}",
+            "updated": "A Po Service is updated with identifier {{ param }}",
+            "deleted": "A Po Service is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Po Service {{ id }}?"
+            },
+            "detail": {
+                "title": "Po Service"
+            },
+            "name": "Name",
+            "type": "Type",
+            "basicPO": "Basic PO"
+        }
+    }
+}

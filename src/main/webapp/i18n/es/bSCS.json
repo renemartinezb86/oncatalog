@@ -1,0 +1,24 @@
+{
+    "onCatalogApp": {
+        "bSCS": {
+            "home": {
+                "title": "BSCS",
+                "createLabel": "Crear nuevo BSCS",
+                "createOrEditLabel": "Crear o editar BSCS",
+                "search": "Search for BSCS"
+            },
+            "created": "Un nuevo BSCS ha sido creado con el identificador {{ param }}",
+            "updated": "Un BSCS ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un BSCS ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar BSCS {{ id }}?"
+            },
+            "detail": {
+                "title": "BSCS"
+            },
+            "serviceName": "Service Name",
+            "bscsService": "Bscs Service",
+            "basicPO": "Basic PO"
+        }
+    }
+}

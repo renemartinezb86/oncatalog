@@ -25,6 +25,30 @@
                         <a [routerLink]="['/optional-service', optionalServices?.id, 'view' ]">{{optionalServices.serviceId}}</a>{{last ? '' : ', '}}
                     </span>
                 </dd>
+                <dt><span jhiTranslate="onCatalogApp.basicPO.poServices">Po Services</span></dt>
+                <dd>
+                    <span *ngFor="let poServices of basicPO.poServices; let last = last">
+                        <a [routerLink]="['/po-service', poServices?.id, 'view' ]">{{poServices.name}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="onCatalogApp.basicPO.netResources">Net Resources</span></dt>
+                <dd>
+                    <span *ngFor="let netResources of basicPO.netResources; let last = last">
+                        <a [routerLink]="['/net-resource', netResources?.id, 'view' ]">{{netResources.name}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="onCatalogApp.basicPO.chargingSystem">Charging System</span></dt>
+                <dd>
+                    <span *ngFor="let chargingSystem of basicPO.chargingSystems; let last = last">
+                        <a [routerLink]="['/charging-system', chargingSystem?.id, 'view' ]">{{chargingSystem.offerTemplate}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="onCatalogApp.basicPO.bSCSs">B SC Ss</span></dt>
+                <dd>
+                    <span *ngFor="let bSCSs of basicPO.bSCSses; let last = last">
+                        <a [routerLink]="['/bscs', bSCSs?.id, 'view' ]">{{bSCSs.bscsService}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
                 <dt><span jhiTranslate="onCatalogApp.basicPO.catalog">Catalog</span></dt>
                 <dd>
                     <div *ngIf="basicPO.catalog">
